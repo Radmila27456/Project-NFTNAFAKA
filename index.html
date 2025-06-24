@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X -UA-cCompatible"content="IE=EDGE"/>
-    <meta name="viewport"content=width=device-width,initial-scale=1.0" />
-    <title>Document></title>
-    </head>
-    <body></body>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFTNAFAKA Mint</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+  <h1>NFTNAFAKA 🌾</h1>
+
+  <button id="connect-button">🔗 Poveži Wallet</button>
+  <p id="wallet-address">Wallet: nije spojen</p>
+
+  <input type="number" id="mint-amount" placeholder="Broj NFT-ova" min="1" value="1" />
+  <button id="mint-button">🪙 Mintaj NFT (0.05 BNB po kom)</button>
+
+  <script src="abi.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
+
