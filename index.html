@@ -1,99 +1,18 @@
- <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mint Your NFTNAFAKA</title>
-  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; text-align: center; }
-    h1 { color: #333; }
-    .container { max-width: 800px; margin: 0 auto; }
-    .nft { border: 1px solid #ccc; padding: 10px; margin: 10px auto; background: #fff; border-radius: 8px; }
-    img { max-width: 100%; height: auto; border-radius: 5px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin-top: 10px; }
-    .status { margin: 20px 0; font-size: 18px; font-weight: bold; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alternative NFTNAFAKA website prototype. Minting is not enabled while the contract and reward details are being verified.">
+  <title>Project NFTNAFAKA | Website prototype</title>
+  <style>body{font:1.1rem/1.6 system-ui,sans-serif;background:#f6f4ee;color:#252525;margin:0}.wrap{max-width:760px;margin:auto;padding:4rem 1.5rem}.status{padding:1rem;border-radius:10px;background:#fff1d3}a{color:#503bb2}</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Mint Your NFTNAFAKA</h1>
-    <p><strong>0.05 BNB per NFT</strong> – You’ll receive <strong>100 SFT</strong> per mint.</p>
-    <p><strong>SFT token address:</strong> <code>0xB8A355bEFA3b2e88CDFbE8e936652f3C293f901A</code></p>
-
-    <div class="status" id="status">🔴 Not connected</div>
-    <button onclick="connectWallet()">🔗 Connect MetaMask</button>
-
-    <div style="margin-top: 20px;">
-      <label for="mintAmount">How many NFTs to mint:</label>
-      <input type="number" id="mintAmount" min="1" max="100" value="1" />
-      <br>
-      <button onclick="mintNFTs()">✨ Mint Now</button>
-    </div>
-
-    <div class="nft">
-      <h3>NFT #0 - Harmony</h3>
-      <img src="https://ipfs.io/ipfs/bafybeihxnj5hlut5wwxtbgyw45pehi3767p5ygwqmqtorqvappejjz4wn4" alt="NFT Harmony" />
-    </div>
-
-    <div class="nft">
-      <h3>NFT #1 - Protection</h3>
-      <img src="https://ipfs.io/ipfs/bafybeihwdxwhtr6u4ny4hs34a3cddmeib6lkud2flzbofn3giofm4vmp5q" alt="NFT Protection" />
-    </div>
-  </div>
-
-  <script>
-    const contractAddress = "0x27A0689189670477E7A8164692B7C2682351CaCE";
-    const walletAddress = "0x070Fa3c5fd21bBA4dD1e5a34Eeba7aBa0944836C";
-
-    const abi = [
-      {
-        "inputs": [
-          { "internalType": "uint256", "name": "amount", "type": "uint256" }
-        ],
-        "name": "mint",
-        "outputs": [],
-        "stateMutability": "payable",
-        "type": "function"
-      }
-    ];
-
-    let web3;
-    let contract;
-    let userAccount;
-
-    async function connectWallet() {
-      if (window.ethereum) {
-        web3 = new Web3(window.ethereum);
-        try {
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          userAccount = accounts[0];
-          document.getElementById("status").innerText = `🟢 Connected: ${userAccount}`;
-          contract = new web3.eth.Contract(abi, contractAddress);
-        } catch (error) {
-          document.getElementById("status").innerText = "❌ Connection rejected";
-        }
-      } else {
-        alert("Please install MetaMask to use this dApp.");
-      }
-    }
-
-    async function mintNFTs() {
-      const amount = document.getElementById("mintAmount").value;
-      const value = web3.utils.toWei((0.05 * amount).toString(), "ether");
-
-      try {
-        await contract.methods.mint(amount).send({
-          from: userAccount,
-          value: value
-        });
-        alert(`✅ Successfully minted ${amount} NFT(s)! 100 SFT per NFT will be sent to your wallet.`);
-      } catch (error) {
-        console.error(error);
-        alert("❌ Transaction failed: " + error.message);
-      }
-    }
-  </script>
+  <main class="wrap">
+    <h1>NFTNAFAKA website prototype</h1>
+    <p>This repository contains an alternative presentation for the NFTNAFAKA digital artwork project.</p>
+    <p class="status"><strong>Status:</strong> minting is not enabled on this page. Historical price and reward details require verification against the deployed contract before any public transaction.</p>
+    <p>See the <a href="https://github.com/Radmila27456/NFTNAFAKA#readme">main NFTNAFAKA documentation</a> for the project status and verification checklist.</p>
+  </main>
 </body>
 </html>
-
